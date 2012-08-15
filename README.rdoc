@@ -1,0 +1,4 @@
+== Financier
+
+Finacier is a rails application meant to provide a place to monitor household spending
+and obtain metrics such as the breakdown of spending per month by category.

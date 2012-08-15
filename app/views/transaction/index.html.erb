@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span5">
+        <div id="chartdiv" style="height:400px;width:300px; "></div>
+      </div>
+      <div class="span7">
+        <form class="well form-inline new-transaction">
+          <h3>Insert a new Transaction</h3>
+          <input id="name" type="text" class="input-small" placeholder="Name">
+          <div class="input-prepend">
+            <span class="add-on">$</span>
+            <input id="amount" class="span1" type="text" size="16">
+          </div>
+          <input id="category" type="text" class="input-small" placeholder="Category">
+          <input id="date" type="text" class="input-medium" placeholder="Date of Transaction">
+          <button type="submit" class="btn new-transaction"><i id="add-transaction" class="icon-plus"></i></button>
+        </form>
+        <div class="well sidebar-nav">
+          <dl>
+            <% @transactions.each do |trans| %>
+              <dt><h3><%= trans.name %></h3></dt>
+              <%= link_to('delete', :controller => 'transaction', :action => 'destroy', :id => trans.id) %>
+              <dd>
+                <div><strong>Category:</strong> <%= trans.category %></div>
+                <div><strong>Amount:</strong> $<%= trans.amount %></div>
+                <div><strong>Date:</strong> <%= trans.date %></div>
+                <hr />
+              </dd>
+            <% end %>
+          </dl>
+        </div><!--/.well -->
+      </div><!--/span-->
+    </div><!--/row-->
+  </div><!--/content-->
