@@ -1,3 +1,19 @@
+window.Financier = {
+  Model: {},
+  Collection: {},
+  Router: {},
+  View: {},
+  initialize: function() {
+    new Financier.Router.Finances({});
+    
+    if (!Backbone.history.started) {
+      Backbone.history.start();
+      Backbone.history.started = true;
+    }
+  }
+}
+
+/*
 $(function(){
   $('button.new-transaction').on('click', function(ev){
     ev.preventDefault();
@@ -18,3 +34,4 @@ $(function(){
     })
   })
 })
+*/
