@@ -39,28 +39,23 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
           <a class="brand" href="#">Financier</a>
         </div>
       </div>
     </div>
 
     <%= yield %>
-
+    <div class="container">
       <footer>
         <p>&copy; Company 2012</p>
       </footer>
-
-    </div> <!-- /container -->
+    </div>
 
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
+    <%=  yield :javascript %>
 
   </body>
 </html>

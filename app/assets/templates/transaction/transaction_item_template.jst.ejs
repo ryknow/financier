@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span5">
+        <div id="chartdiv" style="height:400px;width:300px; "></div>
+      </div>
+      <div class="span7">
+        <div class="well sidebar-nav">
+          <dl>
+            <% $.each(collection, function(trans) { %>
+              <dt><h3><%= trans.name %></h3></dt>
+                <a id='trans.id'>delete</a>
+              <dd>
+                <div><strong>Category:</strong> <%= trans.category %></div>
+                <div><strong>Amount:</strong> $<%= trans.amount %></div>
+                <div><strong>Date:</strong> <%= trans.date %></div>
+                <hr />
+              </dd>
+            <% }); %>
+          </dl>
+        </div><!--/.well -->
+      </div><!--/span-->
+    </div><!--/row-->
+  </div><!--/content-->

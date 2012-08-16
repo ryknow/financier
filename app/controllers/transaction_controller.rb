@@ -2,10 +2,8 @@ class TransactionController < ApplicationController
 
   def index
     @transactions = Transaction.all
-    request.format do |format|
-      format.html {render :html}
-      format.json {render :json => @transactions}
-    end
+    mongo_id(@transactions)
+    render :json => @transactions
   end
 
   def show
