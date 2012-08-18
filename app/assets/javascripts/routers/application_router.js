@@ -1,6 +1,6 @@
 Financier.Router.Finances = Backbone.Router.extend({
   initialize: function() {
-    this.el = $('#main-content');
+    this.el = $("#main-content");
   },
 
   routes: {

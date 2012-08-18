@@ -7,29 +7,47 @@ Financier.View.Transactions = Backbone.View.extend({
   },
 
   events: {
-    'click #new-transaction'  : 'createTransaction'
+    'click #new-transaction'  : 'createTransaction',
+    'click a.trans-delete'    : 'deleteTransaction'
   },
 
   createTransaction: function(ev) {
     ev.preventDefault();
-    console.log("HERE");
+    var self = this;
     var formInput = {};
-    $(':input["text"]', 'form.new-transaction').each(function(index, value) {
+
+    $(':input[type=text]', 'form.new-transaction').each(function(index, value) {
       if ($(this).val().length > 0) {
         formInput[$(this).attr('id')] = $(this).val();
       } else {
-        console.log("Empty Input");
+        console.log("Empty Input", $(this));
       };
     });
 
-    this.model.set(formInput);
-    this.model.save();
+    this.model.save(formInput, {
+      success: function() {
+        self.collection.fetch();
+      }
+    });
+  },
+
+  deleteTransaction: function(ev) {
+    var self = this;
+    var transaction = this.collection.get($(ev.currentTarget).attr("id"));
+    transaction.destroy({
+      success: function() {
+        self.collection.fetch();
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+
   },
 
   render: function() {
-    var transactionInput = new Financier.View.TransactionInput();
-    this.$el.html(transactionInput.render().el);
-    this.$el.append(JST['transaction/transaction_item_template']({collection: this.collection.toJSON}));
+    this.$el.html(JST['transaction/transaction_input_template']);
+    this.$el.append(JST['transaction/transaction_item_template']({collection: this.collection.toJSON()}));
 
     return this;
   }

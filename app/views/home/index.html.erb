@@ -1,8 +1,15 @@
-<div id="main-content"></div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div id="main-content" class="span12">
+      <div id="transaction-input" class="span5"></div>
+      <div id="transaction-list" class="span7"></div>
+    </div>
+  </div>
+</div>
 
 <%= content_for :javascript do %>
   <script type="text/javascript">
-    $(function() {
+    $(function () {
       Financier.initialize();
     });
   </script>
