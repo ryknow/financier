@@ -1,16 +1,42 @@
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div id="main-content" class="span12">
-      <div id="transaction-input" class="span5"></div>
-      <div id="transaction-list" class="span7"></div>
+<div class="container">
+  <div class="row">
+    <div id="debt-list" class="span12"></div>
+    <div class="span12">
+      <div id="chart_div" style="width: 900px; height: 500px; margin-left: -350px" class="span4"></div>
+      <div class="span7">
+        <div id="transaction-input"></div>
+        <div id="transaction-list"></div>
+      </div>
     </div>
   </div>
 </div>
+
 
 <%= content_for :javascript do %>
   <script type="text/javascript">
     $(function () {
       Financier.initialize();
     });
+
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work',     11],
+        ['Eat',      2],
+        ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7]
+      ]);
+
+      var options = {
+        title: 'My Daily Activities'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
   </script>
+
 <% end %>
