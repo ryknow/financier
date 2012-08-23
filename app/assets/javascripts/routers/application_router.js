@@ -16,7 +16,7 @@ Financier.Router.Finances = Backbone.Router.extend({
     debtCollection.fetch();
     var debtView = new Financier.View.Debt({collection: debtCollection});
 
-    var transactionInput = new Financier.View.TransactionInput({collection: transactionsCollection});
+    var transactionInput = new Financier.View.TransactionInput({collection: transactionsCollection, debtList: debtCollection});
   }
 
 });

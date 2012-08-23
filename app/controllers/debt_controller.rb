@@ -15,6 +15,11 @@ class DebtController < ApplicationController
   end
 
   def update
+    debt = Debt.find(params[:id])
+    debt.update_attributes(params)
+    render :json => debt
+  rescue Mongoid::Errors::DocumentNotFound => e
+    flash[:error] = "Error: #{e}"
   end
 
   def destroy

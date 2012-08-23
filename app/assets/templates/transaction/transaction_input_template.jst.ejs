@@ -1,12 +1,24 @@
 <form class="well form-inline new-transaction">
   <h3>Insert a new Transaction</h3>
-  <input id="name" type="text" class="input-small" placeholder="Name">
-  <div class="input-prepend">
-    <span class="add-on" style="margin-right: -5px">$</span>
-    <input id="amount" type="text" class="input-small">
-  </div>
-  <input id="category" type="text" class="input-small" placeholder="Category">
-  <input id="date" type="text" class="input-medium" placeholder="Date of Transaction">
+  <label>Name:
+    <input id="name" type="text" class="input-small" placeholder="Name" />
+  </label>
+  <label>Amount:
+    <div class="input-prepend">
+      <span class="add-on" style="margin-right: -5px">$</span>
+      <input id="amount" type="text" class="input-small" />
+    </div>
+  </label>
+  <input id="category" type="text" class="input-small" placeholder="Category" />
+  <label>Debt Type:
+    <select class="debt-item" name="debt-item">
+      <option value="">None</option>
+      <% $.each(debt, function(index, value) { %>
+        <option value="<%= value._id %>"><%= value.name %></option>
+      <% }) %>
+    </select>
+  </debt>
+  <input id="date" type="text" class="input-medium" placeholder="Date of Transaction" />
   <button class="btn" id="new-transaction">
     <i class="icon-plus"></i>
   </button>

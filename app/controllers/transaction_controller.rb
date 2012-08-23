@@ -6,33 +6,26 @@ class TransactionController < ApplicationController
   end
 
   def show
-    begin
-      render :json => Transaction.find(params[:id])
-    rescue Mongoid::Errors::DocumentNotFound => e
-      flash[:error] = "Error: #{e}"
-    end
+    render :json => Transaction.find(params[:id])
+  rescue Mongoid::Errors::DocumentNotFound => e
+    flash[:error] = "Error: #{e}"
   end
 
   def create
-   begin
      transaction = Transaction.create!({name:     params[:name],
                                          category: params[:category],
                                          amount:   params[:amount],
                                          date:     params[:date]})
      render :json => transaction
-   rescue Exception => e
-     flash[:error] = "Error: #{e}"
-   end
+  rescue Exception => e
+   flash[:error] = "Error: #{e}"
   end
 
   def update
-    begin
-      transaction = Transaction.find(params[:id])
-
-      render :json => transaction
-    rescue Mongoid::Errors::DocumentNotFound => e
-      flash[:error] = "Error: #{e}"
-    end
+    transaction = Transaction.find(params[:id])
+    render :json => transaction
+  rescue Mongoid::Errors::DocumentNotFound => e
+    flash[:error] = "Error: #{e}"
   end
 
   def destroy
