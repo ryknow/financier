@@ -15,6 +15,7 @@
 //= require underscore
 //= require financier
 //= require backbone-rails
+//= require backbone-support
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

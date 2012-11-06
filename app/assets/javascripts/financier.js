@@ -3,6 +3,7 @@ window.Financier = {
   Collection: {},
   Router: {},
   View: {},
+  Support: {},
   initialize: function() {
 
     new Financier.Router.Finances({});

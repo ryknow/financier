@@ -18,11 +18,12 @@ end
 
 gem 'jquery-rails'
 gem 'underscore-rails'
+gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'mongoid'
 gem 'mongoid-indifferent-access'
 gem 'backbone-rails'
-#gem 'backbone-support'
+gem 'backbone-support'
 gem 'ejs'
 #gem 'bootstrap-datepicker-rails'
 

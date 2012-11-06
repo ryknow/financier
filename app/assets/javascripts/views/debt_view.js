@@ -1,13 +1,12 @@
-Financier.View.Debt = Backbone.View.extend({
+Financier.View.Debt = Support.CompositeView.extend({
   initialize: function(options) {
     this.collection = options.collection;
     this.collection.on('reset', this.render, this);
   },
 
-  el: '#debt-list',
-
+  // TODO: Render Debt Items individually
   render: function() {
-    this.$el.html(JST['debt_template']({debt: this.collection.toJSON()}))
-
+    this.$el.html(JST['debt_template']({debt: this.collection.toJSON()}));
+    return this;
   }
 })

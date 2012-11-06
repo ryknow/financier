@@ -1,14 +1,15 @@
-<div class="well">
-  <dl>
-    <% $.each(collection, function(index, trans) { %>
-      <dt><h3><%= trans.name %></h3></dt>
-      <a class="trans-delete" id='<%= trans._id %>'>delete</a>
-      <dd>
-        <div><strong>Category:</strong> <%= trans.category %></div>
-        <div><strong>Amount:</strong> $<%= trans.amount %></div>
-        <div><strong>Date:</strong> <%= trans.date %></div>
-        <hr />
-      </dd>
-    <% }); %>
-  </dl>
-</div>
+<td>
+  <%= name %>
+</td>
+<td>
+  <%= category %>
+</td>
+<td>
+  <%= amount %>
+</td>
+<td>
+  <%= date %>
+</td>
+<td>
+  <a class="btn trans-delete">Delete</a>
+</td>

@@ -1,6 +1,6 @@
 <% $.each(debt, function(key, value) { %>
-  <div class="span2">
-    <h4><%= value.name %></h4>
+  <div style="display: inline-block; margin-right: 25px">
+    <h4 class="debt-items"><%= value.name %></h4>
     $<%= value.amount_owed.toFixed(2) %>
   </div>
 <% }) %>

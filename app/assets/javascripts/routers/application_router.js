@@ -1,4 +1,4 @@
-Financier.Router.Finances = Backbone.Router.extend({
+Financier.Router.Finances = Support.SwappingRouter.extend({
   initialize: function() {
     this.el = $("#main-content");
   },
@@ -9,14 +9,13 @@ Financier.Router.Finances = Backbone.Router.extend({
 
   home: function() {
     var transactionsCollection = new Financier.Collection.Transactions();
-    transactionsCollection.fetch();
-    var transactionsView = new Financier.View.Transactions({collection: transactionsCollection});
-
     var debtCollection = new Financier.Collection.Debt();
-    debtCollection.fetch();
-    var debtView = new Financier.View.Debt({collection: debtCollection});
+    var transactionsView = new Financier.View.Transactions({transactionCollection: transactionsCollection, debtCollection: debtCollection});
 
-    var transactionInput = new Financier.View.TransactionInput({collection: transactionsCollection, debtList: debtCollection});
+    transactionsCollection.fetch();
+    debtCollection.fetch();
+
+    this.swap(transactionsView);
   }
 
 });
