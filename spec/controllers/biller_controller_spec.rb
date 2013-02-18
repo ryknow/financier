@@ -25,7 +25,8 @@ describe BillerController do
 
   describe "#show" do
     it "should return a single biller" do
-      true.should == false
+      get :show, id: @new_biller.id
+      response.status.should == 200
     end
   end
 end
